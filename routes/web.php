@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
+    // dd($lounguyen99);
     return view('welcome');
+
 });
+
+Route::view('duong-dan','welcome');
