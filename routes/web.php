@@ -11,10 +11,33 @@
 |
 */
 
+use App\Models\User;
+use App\Models\Posts;
+
 Route::get('/', function () {
-    // dd($lounguyen99);
     return view('welcome');
 
 });
 
-Route::view('duong-dan','welcome');
+
+Route::get('route-starter', function () {
+	$users = factory(User::class, 10)
+	->make()
+	->toArray();
+    return view('starter', [
+    	'users' => $users
+    ]);
+
+});
+
+Route::get('lou', function () {
+	$posts = factory(Posts::class, 10)
+	->make()
+	->toArray();
+    return view('posts', [
+    	'posts' => $posts
+    ]);
+
+});
+
+
