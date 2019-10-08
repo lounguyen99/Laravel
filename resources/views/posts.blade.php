@@ -32,11 +32,14 @@ post
   <thead>
     <th>User ID</th>
     <th>Content</th>
+    <th>User name</th>
   </thead>
   <tbody>
     @foreach($posts as $post)
-    <tr>      <td>{{ $post['user_id'] }}</td>
+    <tr>      
+      <td>{{ $post['user_id'] }}</td>
       <td>{{ $post['content'] }}</td>
+      <td>{{ $post['user']['name'] }}</td>
     </tr>
     @endforeach
   </tbody>

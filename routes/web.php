@@ -11,32 +11,25 @@
 |
 */
 
-use App\Models\User;
-use App\Models\Posts;
+use Faker\Generator as Faker;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
 
+// });
+
+
+// route for user
+Route::group(['prefix' => 'users','as' =>'users.',],function(){
+    Route::get('/', 'UserController@index')->name('index');
+    Route::view('/create' , 'users/create')->name('create');
+    Route::post('/store', 'UserController@store')->name('store');
+    Route::get('/edit/{id}','UserController@edit');
+    Route::post('/update', 'UserController@update')->name('update');
+    Route::post('/destroy/{id}','UserController@destroy')->name('destroy');
 });
-
-
-Route::get('route-starter', function () {
-	$users = factory(User::class, 10)
-	->make()
-	->toArray();
-    return view('starter', [
-    	'users' => $users
-    ]);
-
-});
-
-Route::get('lou', function () {
-	$posts = factory(Posts::class, 10)
-	->make()
-	->toArray();
-    return view('posts', [
-    	'posts' => $posts
-    ]);
+Route::group(['prefix' => 'posts','as' =>'posts.',],function(){
 
 });
 
